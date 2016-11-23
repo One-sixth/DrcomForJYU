@@ -1,0 +1,13 @@
+首先 EAP START
+
+发送 标准的  EAP START 请求包
+
+得到 来自认证服务器的 Require 报文，提取 eap id 
+
+发送 Response 带有 用户名，本机地址，未知数据(猜测是登陆命令) 的报文，使用 上面的 eap id （其实可以随便乱设，因为服务器根本不理。。。）
+
+得到 来自认证服务器的 Require MD5-Challenge 报文，提取 eap id (有用），eap MD5-Challenge 密匙
+
+发送 Response 带有 eap id ，eap MD5-Challenge 交换密匙 的报文
+
+等待 来自认证服务器的 Success 报文，如果有则成功认证，如果无响应则认证失败
